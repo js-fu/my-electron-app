@@ -1,0 +1,25 @@
+## Why
+
+This repository is a freshly scaffolded Electron Forge + Vite + TypeScript desktop app with no contributor- or agent-facing documentation. AI coding agents (and new contributors) currently have to re-derive the architecture, build commands, and conventions from scratch on every task. A single `AGENTS.md` at the repo root gives agents a reliable, authoritative entry point.
+
+## What Changes
+
+- Add an `AGENTS.md` file at the repository root that documents the project for AI coding agents.
+- Cover: project overview, tech stack, the three-process Electron model (main / preload / renderer) and where each lives, the Vite multi-build setup, available npm/Forge scripts, lint/build/run conventions, and security-relevant defaults (context isolation, Electron Fuses).
+- No application source code, dependencies, or build configuration changes.
+
+## Capabilities
+
+### New Capabilities
+
+- `agent-guidance`: Repository-level documentation (`AGENTS.md`) that orients AI agents to the project's structure, commands, and conventions.
+
+### Modified Capabilities
+
+<!-- None: no existing spec requirements change. -->
+
+## Impact
+
+- New file: `AGENTS.md` at repo root.
+- No impact on `src/`, `forge.config.ts`, build pipeline, or runtime behavior.
+- Documentation only; zero dependency or API changes.
