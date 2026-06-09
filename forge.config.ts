@@ -20,6 +20,7 @@ const config: ForgeConfig = {
         name: 'my-electron-app',
       },
       prerelease: false,
+      draft: false,
     }),
   ],
   makers: [
