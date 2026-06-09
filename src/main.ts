@@ -26,7 +26,9 @@ const createWindow = () => {
     );
   }
 
-  mainWindow.webContents.openDevTools();
+  if (!app.isPackaged) {
+    mainWindow.webContents.openDevTools();
+  }
 };
 
 app.on('ready', () => {
