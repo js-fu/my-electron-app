@@ -1,16 +1,18 @@
-import type { Todo } from './features/todos/types';
-
-interface ElectronTodosAPI {
-  list: () => Promise<Todo[]>;
-  create: (title: string) => Promise<Todo>;
-  update: (id: string, patch: { completed: boolean }) => Promise<Todo>;
-  delete: (id: string) => Promise<void>;
-}
+import type { HttpMethod } from './ipc-handlers';
 
 declare global {
   interface Window {
     electronAPI: {
-      todos: ElectronTodosAPI;
+      request: <T = unknown>(
+        method: HttpMethod,
+        path: string,
+        body?: unknown,
+      ) => Promise<T>;
+      upload: <T = unknown>(
+        path: string,
+        file: File,
+        fieldName?: string,
+      ) => Promise<T>;
     };
   }
 }

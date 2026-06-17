@@ -5,17 +5,19 @@ function ipcError(raw: unknown): never {
   throw new Error(msg);
 }
 
+const request = window.electronAPI.request;
+
 export const fetchTodos = (): Promise<Todo[]> =>
-  window.electronAPI.todos.list().catch(ipcError);
+  request<Todo[]>('GET', '/todos').catch(ipcError);
 
 export const createTodo = (title: string): Promise<Todo> =>
-  window.electronAPI.todos.create(title).catch(ipcError);
+  request<Todo>('POST', '/todos', { title }).catch(ipcError);
 
 export const updateTodo = (
   id: string,
   patch: { completed: boolean },
 ): Promise<Todo> =>
-  window.electronAPI.todos.update(id, patch).catch(ipcError);
+  request<Todo>('PATCH', `/todos/${id}`, patch).catch(ipcError);
 
 export const deleteTodo = (id: string): Promise<void> =>
-  window.electronAPI.todos.delete(id).catch(ipcError);
+  request<void>('DELETE', `/todos/${id}`).catch(ipcError);
